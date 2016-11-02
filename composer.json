@@ -1,0 +1,5 @@
+{
+    "require": {
+        "moltin/php-sdk": "^1.3"
+    }
+}
