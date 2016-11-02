@@ -1,2 +1,2 @@
 # Moltin_authentication_tutorial
-A small PHP web application that interacts with the moltin API (simple authentication and products listing)
+A small PHP web application that interacts with the Moltin API (simple authentication and products listing) using the Moltin PHP-SDK.
