@@ -398,24 +398,24 @@ var\_dump() function.
 
 *Lines 31-39:*
 
-> *else {*
+>*else {*
 
->   *?\>*
+>    *?\>*
 
->   *\<font color='red'\>ERROR: \</font\>Wrong credentials.*
+>    *\<font color='red'\>ERROR: \</font\>Wrong credentials.*
 
->   *Hit the back button and try again.*
+>    *Hit the back button and try again.*
 
->   *\<br\>*
+>    *\<br\>*
 
->   *\<input type="button" value="back" onclick="window.location =
->   'index.html';"\>*
+>    *\<input type="button" value="back" onclick="window.location =
+>'index.html';"\>*
 
->   *\<br\>\<br\>*
+>    *\<br\>\<br\>*
 
->   *\<?php*
+>    *\<?php*
 
-> *}*
+>*}*
 
 These lines of code will execute in case of wrong credentials. It will print the
 ERROR message and a 'Back' button.
