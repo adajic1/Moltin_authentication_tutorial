@@ -178,7 +178,7 @@ open the moltin/index.html in a browser, you should see the following:
 Create a new empty file: moltin/authentication.php
 
 Put the following code into the file:
-
+```php
 1.  **\<?php**
 
 2.  error\_reporting**(**E\_ALL **& \~**E\_NOTICE**);**
@@ -276,6 +276,7 @@ Put the following code into the file:
 43. session\_unset**();**
 
 44. **?\>**
+```
 
 **Code explanation**
 
