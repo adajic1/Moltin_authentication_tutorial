@@ -281,7 +281,7 @@ Put the following code into the file:
 
 *Line 2:*
 
-*error\_reporting(E\_ALL & \~E\_NOTICE);*
+>*error\_reporting(E\_ALL & \~E\_NOTICE);*
 
 This means that PHP will display all syntax errors and warnings, except notices.
 In the case of wrong credentials, the Moltin PHP-SDK would show some notices
@@ -289,31 +289,31 @@ which we don't want to display.
 
 *Line 3:*
 
-*require \_\_DIR\_\_ . ‘/vendor/autoload.php’;*
+>*require \_\_DIR\_\_ . ‘/vendor/autoload.php’;*
 
 Command which will load the Moltin PHP-SDK.
 
 *Lines 4-12:*
 
-*function getVar($var) {*
+>*function getVar($var) {*
 
-    *// Safely get the submitted variable (POST or GET method);*
+>    *// Safely get the submitted variable (POST or GET method);*
 
-    *// Returns NULL if there is no variable with the specified name;*
+>    *// Returns NULL if there is no variable with the specified name;*
 
-    *if (isset($\_POST[$var]))*
+>    *if (isset($\_POST[$var]))*
 
-        *return get\_magic\_quotes\_gpc() ? stripslashes($\_POST[$var]) :
-$\_POST[$var];*
+>        *return get\_magic\_quotes\_gpc() ? stripslashes($\_POST[$var]) :
+>$\_POST[$var];*
 
-    *else if (isset($\_GET[$var]))*
+>    *else if (isset($\_GET[$var]))*
 
-        *return get\_magic\_quotes\_gpc() ? stripslashes($\_GET[$var]) :
-$\_GET[$var];*
+>        *return get\_magic\_quotes\_gpc() ? stripslashes($\_GET[$var]) :
+>$\_GET[$var];*
 
-    *else return NULL;*
+>    *else return NULL;*
 
-*}*
+>*}*
 
 This is a function which can be used to get the submitted variable by name. It
 doesn't matter which method was used to send the variable (POST or GET). It will
@@ -321,16 +321,16 @@ return NULL if there is no variable with the specified name.
 
 *Lines 13-14:*
 
-*use Moltin\\SDK\\Request\\CURL as Request;*
+>*use Moltin\\SDK\\Request\\CURL as Request;*
 
-*use Moltin\\SDK\\Storage\\Session as Storage;*
+>*use Moltin\\SDK\\Storage\\Session as Storage;*
 
 These lines allow us to use shorter syntax for cURL requests, and for accessing
 the Storage class.
 
 *Line 15:*
 
-*$moltin = new \\Moltin\\SDK\\SDK(new Storage(), new Request());*
+>*$moltin = new \\Moltin\\SDK\\SDK(new Storage(), new Request());*
 
 This line of code will create a Moltin object, load cookies, set some default
 variables etc. This is the main object which provides an interface for the
@@ -344,13 +344,13 @@ an exception during execution of code from the 'try' block.
 
 *Lines 17-19:*
 
-*$result = Moltin::Authenticate('ClientCredentials', [*
+>*$result = Moltin::Authenticate('ClientCredentials', [*
 
-*'client\_id' =\> getVar('client\_id'),*
+>*'client\_id' =\> getVar('client\_id'),*
 
-*'client\_secret' =\> getVar('client\_secret')*
+>*'client\_secret' =\> getVar('client\_secret')*
 
-*]);*
+>*]);*
 
 This code calls a static 'Authenticate' function from the Moltin object and
 retrieves an access token internally. The first argument is a string:
@@ -361,36 +361,36 @@ $result variable is either true (in case of successful authentication) or false
 
 *Lines 21-31:*
 
-*if ($result == true) {*
+>*if ($result == true) {*
 
-    *?\>*
+>    *?\>*
 
-    *\<font color='blue'\>\<b\>Successful authentication.\</b\>\</font\>*
+>    *\<font color='blue'\>\<b\>Successful authentication.\</b\>\</font\>*
 
-    *\&nbsp;*
+>    *\&nbsp;*
 
-    *\<input type="button" value="back" onclick="window.location = 'index.html';"\>*
+>    *\<input type="button" value="back" onclick="window.location = 'index.html';"\>*
 
-    *\<br\>\<br\>*
+>    *\<br\>\<br\>*
 
-    *Products listing:\<br\>*
+>    *Products listing:\<br\>*
 
-    *\<?php*
+>    *\<?php*
 
-    *$products = Product::Listing();*
+>    *$products = Product::Listing();*
 
-    *var\_dump($products['result']);*
+>    *var\_dump($products['result']);*
 
-*}*
+>*}*
 
 This part of code will execute in case of successful authentication. It will
 print the message, a 'Back' button and products listing.
 
 *Lines 29-30:*
 
-*$products = Product::Listing();*
+>*$products = Product::Listing();*
 
-*var\_dump($products['result']);*
+>*var\_dump($products['result']);*
 
 Product::Listing() will use the access token (internally), call the remote
 Moltin API to retrieve all products' data and print it using the standard
