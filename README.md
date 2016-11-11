@@ -363,23 +363,23 @@ with credentials data obtained by previously defined function 'getVar'. The
 
 *if (\$result == true) {*
 
-*?\>*
+    *?\>*
 
-*\<font color='blue'\>\<b\>Successful authentication.\</b\>\</font\>*
+    *\<font color='blue'\>\<b\>Successful authentication.\</b\>\</font\>*
 
-*\&nbsp;*
+    *\&nbsp;*
 
-*\<input type="button" value="back" onclick="window.location = 'index.html';"\>*
+    *\<input type="button" value="back" onclick="window.location = 'index.html';"\>*
 
-*\<br\>\<br\>*
+    *\<br\>\<br\>*
 
-*Products listing:\<br\>*
+    *Products listing:\<br\>*
 
-*\<?php*
+    *\<?php*
 
-*\$products = Product::Listing();*
+    *\$products = Product::Listing();*
 
-*var\_dump(\$products['result']);*
+    *var\_dump(\$products['result']);*
 
 *}*
 
