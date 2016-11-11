@@ -190,14 +190,14 @@ Put the following code into the file:
 42.	}  
 43.	session_unset();  
 44.	?>  
-
 ```
 
 **Code explanation**
 
 *Line 2:*
-
->*error\_reporting(E\_ALL & \~E\_NOTICE);*
+```php
+error_reporting(E_ALL & ~E_NOTICE); 
+```
 
 This means that PHP will display all syntax errors and warnings, except notices.
 In the case of wrong credentials, the Moltin PHP-SDK would show some notices
@@ -205,48 +205,40 @@ which we don't want to display.
 
 *Line 3:*
 ```php
-*require \_\_DIR\_\_ . ‘/vendor/autoload.php’;*
+require __DIR__ . '/vendor/autoload.php';
 ```
 Command which will load the Moltin PHP-SDK.
 
 *Lines 4-12:*
-
->*function getVar($var) {*
-
->    *// Safely get the submitted variable (POST or GET method);*
-
->    *// Returns NULL if there is no variable with the specified name;*
-
->    *if (isset($\_POST[$var]))*
-
->        *return get\_magic\_quotes\_gpc() ? stripslashes($\_POST[$var]) :
->$\_POST[$var];*
-
->    *else if (isset($\_GET[$var]))*
-
->        *return get\_magic\_quotes\_gpc() ? stripslashes($\_GET[$var]) :
->$\_GET[$var];*
-
->    *else return NULL;*
-
->*}*
+```php
+function getVar($var) {
+	// Safely get the submitted variable (POST or GET method);
+	// Returns NULL if there is no variable with the specified name;
+	if (isset($_POST[$var])) 
+		return get_magic_quotes_gpc() ? stripslashes($_POST[$var]) : $_POST[$var];
+	else if (isset($_GET[$var])) 
+		return get_magic_quotes_gpc() ? stripslashes($_GET[$var]) : $_GET[$var];
+	else return NULL;
+}
+```
 
 This is a function which can be used to get the submitted variable by name. It
 doesn't matter which method was used to send the variable (POST or GET). It will
 return NULL if there is no variable with the specified name.
 
 *Lines 13-14:*
-
->*use Moltin\\SDK\\Request\\CURL as Request;*
-
->*use Moltin\\SDK\\Storage\\Session as Storage;*
+```php
+use Moltin\SDK\Request\CURL as Request;
+use Moltin\SDK\Storage\Session as Storage;
+```
 
 These lines allow us to use shorter syntax for cURL requests, and for accessing
 the Storage class.
 
 *Line 15:*
-
->*$moltin = new \\Moltin\\SDK\\SDK(new Storage(), new Request());*
+```php
+$moltin = new \Moltin\SDK\SDK(new Storage(), new Request());
+```
 
 This line of code will create a Moltin object, load cookies, set some default
 variables etc. This is the main object which provides an interface for the
@@ -259,14 +251,12 @@ and printed to the user. If anything unexpected happens, functions could throw
 an exception during execution of code from the 'try' block.
 
 *Lines 17-19:*
-
->*$result = Moltin::Authenticate('ClientCredentials', [*
-
->*'client\_id' =\> getVar('client\_id'),*
-
->*'client\_secret' =\> getVar('client\_secret')*
-
->*]);*
+```php
+$result = Moltin::Authenticate('ClientCredentials', [
+	'client_id'     => getVar('client_id'),
+	'client_secret' => getVar('client_secret')
+]);
+```
 
 This code calls a static 'Authenticate' function from the Moltin object and
 retrieves an access token internally. The first argument is a string:
@@ -276,69 +266,53 @@ $result variable is either true (in case of successful authentication) or false
 (in case of wrong credentials).
 
 *Lines 21-31:*
-
->*if ($result == true) {*
-
->    *?\>*
-
->    *\<font color='blue'\>\<b\>Successful authentication.\</b\>\</font\>*
-
->    *\&nbsp;*
-
->    *\<input type="button" value="back" onclick="window.location = 'index.html';"\>*
-
->    *\<br\>\<br\>*
-
->    *Products listing:\<br\>*
-
->    *\<?php*
-
->    *$products = Product::Listing();*
-
->    *var\_dump($products['result']);*
-
->*}*
+```php
+if ($result == true) { 
+	?>
+	<font color='blue'><b>Successful authentication.</b></font>
+	&nbsp;
+	<input type="button" value="back" onclick="window.location = 'index.html';">
+	<br><br>
+	Products listing:<br>		
+	<?php
+	$products = Product::Listing();
+	var_dump($products['result']);
+}
+```
 
 This part of code will execute in case of successful authentication. It will
 print the message, a 'Back' button and products listing.
 
 *Lines 29-30:*
-
->*$products = Product::Listing();*
-
->*var\_dump($products['result']);*
+```php
+$products = Product::Listing();
+var_dump($products['result']);
+```
 
 Product::Listing() will use the access token (internally), call the remote
 Moltin API to retrieve all products' data and print it using the standard
 var\_dump() function.
 
 *Lines 31-39:*
-
->*else {*
-
->    *?\>*
-
->    *\<font color='red'\>ERROR: \</font\>Wrong credentials.*
-
->    *Hit the back button and try again.*
-
->    *\<br\>*
-
->    *\<input type="button" value="back" onclick="window.location =
->'index.html';"\>*
-
->    *\<br\>\<br\>*
-
->    *\<?php*
-
->*}*
+```php
+else {
+	?>
+	<font color='red'>ERROR: </font>Wrong credentials. 
+	Hit the back button and try again.
+	<br>
+	<input type="button" value="back" onclick="window.location = 'index.html';">
+	<br><br>
+	<?php		
+}
+```
 
 These lines of code will execute in case of wrong credentials. It will print the
 ERROR message and a 'Back' button.
 
 *Line 43:*
-
->*session\_unset();*
+```php
+session\_unset();
+```
 
 This command should be commented out as it will delete cookies (which means it
 will delete the access token obtained during authorization as well). So, next
