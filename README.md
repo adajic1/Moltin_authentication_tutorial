@@ -179,95 +179,101 @@ Create a new empty file: moltin/authentication.php
 
 Put the following code into the file:
 
-1.  \<?php
+1.  **\<?php**
 
-2.  error\_reporting(E\_ALL & \~E\_NOTICE);
+2.  error\_reporting**(**E\_ALL **& \~**E\_NOTICE**);**
 
-3.  **require** \_\_DIR\_\_ . ‘/vendor/autoload.php’;
+3.  **require** \_\_DIR\_\_ **.** '/vendor/autoload.php'**;**
 
-4.  **function** getVar(\$var) {
+4.  **function** getVar**(**\$var**) {**
 
-5.  // Safely get the submitted variable (POST or GET method);
+5.      // Safely get the submitted variable (POST or GET method);
 
-6.  // Returns NULL if there is no variable with the specified name;
+6.      // Returns NULL if there is no variable with the specified name;
 
-7.  **if** (isset($$\_\text{POST}\lbrack$$var]))
+7.      **if (isset(**\$\_POST**[**\$var**]))**
 
-8.  **return** get\_magic\_quotes\_gpc() ?
-    stripslashes($$\_\text{POST}\lbrack$$var]) : $$\_\text{POST}\lbrack$$var];
+8.          **return** get\_magic\_quotes\_gpc**() ?**
+    stripslashes**(**\$\_POST**[**\$var**]) :** \$\_POST**[**\$var**];**
 
-9.  **else if** (isset($$\_\text{GET}\lbrack$$var]))
+9.      **else if (isset(**\$\_GET**[**\$var**]))**
 
-10. **return** get\_magic\_quotes\_gpc() ?
-    stripslashes($$\_\text{GET}\lbrack$$var]) : $$\_\text{GET}\lbrack$$var];
+10.         **return** get\_magic\_quotes\_gpc**() ?**
+    stripslashes**(**\$\_GET**[**\$var**]) :** \$\_GET**[**\$var**];**
 
-11. **else return** NULL;
+11.     **else return** NULL**;**
 
-12. }
+12. **}**
 
-13. **use** Moltin\\SDK\\Request\\CURL **as** Request;
+13. **use** Moltin**\\**SDK**\\**Request**\\**CURL **as** Request**;**
 
-14. **use** Moltin\\SDK\\Storage\\Session **as** Storage;
+14. **use** Moltin**\\**SDK**\\**Storage**\\**Session **as** Storage**;**
 
-15. \$moltin = **new** \\Moltin\\SDK\\SDK(**new** Storage(), **new** Request());
+15. \$moltin **= new \\**Moltin**\\**SDK**\\**SDK**(new** Storage**(), new**
+    Request**());**
 
-16. try {
+16. try **{**    
 
-17. \$result = Moltin::Authenticate(‘ClientCredentials’, [
+17.     \$result **=** Moltin**::**Authenticate**(**'ClientCredentials'**, [**
 
-18. ‘client\_id’ =\> getVar(‘client\_id’),
+18.      'client\_id' **=\>** getVar**(**'client\_id'**),**
 
-19. ‘client\_secret’ =\> getVar(‘client\_secret’)
+19.      'client\_secret' **=\>** getVar**(**'client\_secret'**)**
 
-20. ]);
+20.     **]);**
 
-21. **if** (\$result == true) {
+21.     **if (**\$result **==** true**) {**
 
-22. ?\>
+22.      **?\>**
 
-23. \<font color=’blue’\>\<b\>Successful authentication.\</b\>\</font\>
+23.         **\<**font color**=**'blue'**\>\<**b**\>**Successful
+    authentication**.\</**b**\>\</**font**\>**
 
-24. \<input type=”button” value=”back” onclick=”window.location =
-    ‘index.html’;”\>
+24.         **&**nbsp**;**
 
-25. \<br\>\<br\>
+25.         **\<**input type**=**"button" value**=**"back"
+    onclick**=**"window.location = 'index.html';"**\>**
 
-26. Products listing:\<br\>
+26.         **\<**br**\>\<**br**\>**
 
-27. \<?php
+27.         Products listing**:\<**br**\>**        
 
-28. \$products = Product::Listing();
+28.         **\<?php**
 
-29. var\_dump(\$products[‘result’]);
+29.         \$products **=** Product**::**Listing**();**
 
-30. } **else** {
+30.         var\_dump**(**\$products**[**'result'**]);**
 
-31. ?\>
+31.     **} else {**
 
-32. \<font color=’red’\>ERROR: \</font\>Wrong credentials.
+32.         **?\>**
 
-33. Hit the back button **and** try again.
+33.         **\<**font color**=**'red'**\>**ERROR**: \</**font**\>**Wrong
+    credentials**.**
 
-34. \<br\>
+34.         Hit the back button **and** try again**.**
 
-35. \<input type=”button” value=”back” onclick=”window.location =
-    ‘index.html’;”\>
+35.         **\<**br**\>**
 
-36. \<br\>\<br\>
+36.         **\<**input type**=**"button" value**=**"back"
+    onclick**=**"window.location = 'index.html';"**\>**
 
-37. \<?php
+37.         **\<**br**\>\<**br**\>**
 
-38. }
+38.         **\<?php**        
 
-39. } catch (Exception \$e) {
+39.     **}**
 
-40. print “\<font color=’red’\>Caught exception: \</font\>”.\$e-\>getMessage();
+40. **}** catch **(**Exception \$e**) {**
 
-41. }
+41. **print** "\<font color='red'\>Caught exception:
+    \</font\>"**.**\$e**-\>**getMessage**();**
 
-42. session\_unset();
+42. **}**
 
-43. ?\>
+43. session\_unset**();**
+
+44. **?\>**
 
 **Code explanation**
 
