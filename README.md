@@ -297,23 +297,21 @@ Command which will load the Moltin PHP-SDK.
 
 *function getVar(\$var) {*
 
->   *// Safely get the submitted variable (POST or GET method);*
+*// Safely get the submitted variable (POST or GET method);*
 
->   *// Returns NULL if there is no variable with the specified name;*
+*// Returns NULL if there is no variable with the specified name;*
 
->   *if (isset(*$$\_\text{POST}\lbrack$$*var]))*
+*if (isset(\$\_POST[\$var]))*
 
->   *return get\_magic\_quotes\_gpc() ?
->   stripslashes(*$$\_\text{POST}\lbrack$$*var]) :*
->   $$\_\text{POST}\lbrack$$*var];*
+*return get\_magic\_quotes\_gpc() ? stripslashes(\$\_POST[\$var]) :
+\$\_POST[\$var];*
 
->   *else if (isset(*$$\_\text{GET}\lbrack$$*var]))*
+*else if (isset(\$\_GET[\$var]))*
 
->   *return get\_magic\_quotes\_gpc() ?
->   stripslashes(*$$\_\text{GET}\lbrack$$*var]) :*
->   $$\_\text{GET}\lbrack$$*var];*
+*return get\_magic\_quotes\_gpc() ? stripslashes(\$\_GET[\$var]) :
+\$\_GET[\$var];*
 
->   *else return NULL;*
+*else return NULL;*
 
 *}*
 
