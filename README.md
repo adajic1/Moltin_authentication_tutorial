@@ -102,64 +102,66 @@ Create a new empty file: moltin/index.html
 
 Put the following code into the file:
 
-1.  \<!DOCTYPE html**\>**
+1.  **\<!DOCTYPE html\>**
 
 2.  **\<html\>**
 
 3.  **\<head\>**
 
-4.  **\<title\>**Authentication**\</title\>**
+4.      **\<title\>**Authentication**\</title\>**
 
-5.  **\<meta** http-equiv="content-type" content="text/html;
+5.      **\<meta http-equiv=**"content-type" **content=**"text/html;
     charset=utf-8"**\>**
 
-6.  **\<meta** name="description" content="Authentication form"**\>**
+6.      **\<meta name=**"description" **content=**"Authentication
+    form"**\>**    
 
 7.  **\</head\>**
 
-8.  **\<body** style="margin: 5px; padding: 10px;"**\>**
+8.  **\<body style=**"margin: 5px; padding: 10px;"**\>**
 
-9.  **\<center\>**
+9.      **\<center\>**
 
-10. **\<h2** style="display: inline;"**\>**Moltin API authentication
+10.     **\<h2 style=**"display: inline;"**\>**Moltin API authentication
     demo**\</h1\>**
 
-11. **\<br\>**
+11.     **\<br\>**
 
-12. Test your credentials for authentication
+12.     Test your credentials for authentication
 
-13. **\</center\>**
+13.     **\</center\>**
 
-14. **\<form** action="authentication.php" method="post"**\>**
+14.     **\<form action=**"authentication.php" **method=**"post"**\>**
 
-15. client\_id:**\<br\>\<input** type="text" name="client\_id" size=50**\>**
+15.         client\_id:**\<br\>\<input type=**"text" **name=**"client\_id"
+    **size=50\>**
 
-16. **\<br\>**
+16.         **\<br\>**
 
-17. client\_secret:**\<br\>\<input** type="text" name="client\_secret"
-    size=50**\>**
+17.         client\_secret:**\<br\>\<input type=**"text"
+    **name=**"client\_secret" **size=50\>**
 
-18. **\<br\>\<input** type="submit" value="Submit"**\>**
+18.         **\<br\>\<input type=**"submit" **value=**"Submit"**\>**
 
-19. **\</form\>\<br\>\<br\>**
+19.     **\</form\>\<br\>\<br\>**
 
-20. Example values:**\<br\>**
+20.     Example values:**\<br\>**
 
-21. **\<table** cellspacing="0" cellpadding="10" border="1"**\>**
+21.     **\<table cellspacing=**"0" **cellpadding=**"10" **border=**"1"**\>**
 
-22. **\<tr\>**
+22.     **\<tr\>**
 
-23. **\<td\>**client\_id:**\</td\>\<td\>**ECCYbXzj9csBQZnVJhR5B5UXOoFhHiYI3qTMSzkqEX**\</td\>**
+23.         **\<td\>**client\_id:**\</td\>\<td\>**ECCYbXzj9csBQZnVJhR5B5UXOoFhHiYI3qTMSzkqEX**\</td\>**
 
-24. **\</tr\>**
+24.     **\</tr\>**
 
-25. **\<tr\>**
+25.     **\<tr\>**
 
-26. **\<td\>**client\_secret:**\</td\>\<td\>**DfXd2yUn41Ved8wnjhG11HYJt0Ah79Y1LNJtq107KH**\</td\>**
+26.         **\<td\>**client\_secret:**\</td\>\<td\>**DfXd2yUn41Ved8wnjhG11HYJt0Ah79Y1LNJtq107KH**\</td\>**
 
-27. **\</tr\>**
+27.     **\</tr\>**
 
-28. **\</table\>**
+28.     **\</table\>**
 
 29. **\</body\>**
 
