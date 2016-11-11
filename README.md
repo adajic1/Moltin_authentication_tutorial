@@ -204,9 +204,9 @@ In the case of wrong credentials, the Moltin PHP-SDK would show some notices
 which we don't want to display.
 
 *Line 3:*
-
->*require \_\_DIR\_\_ . ‘/vendor/autoload.php’;*
-
+```php
+*require \_\_DIR\_\_ . ‘/vendor/autoload.php’;*
+```
 Command which will load the Moltin PHP-SDK.
 
 *Lines 4-12:*
