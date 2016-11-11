@@ -422,7 +422,7 @@ ERROR message and a 'Back' button.
 
 *Line 43:*
 
-*session\_unset();*
+>*session\_unset();*
 
 This command should be commented out as it will delete cookies (which means it
 will delete the access token obtained during authorization as well). So, next
