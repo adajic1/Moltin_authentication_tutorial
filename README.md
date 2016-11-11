@@ -185,21 +185,21 @@ Put the following code into the file:
 
 3.  **require** \_\_DIR\_\_ **.** '/vendor/autoload.php'**;**
 
-4.  **function** getVar**(**\$var**) {**
+4.  **function** getVar**(**$var**) {**
 
 5.      // Safely get the submitted variable (POST or GET method);
 
 6.      // Returns NULL if there is no variable with the specified name;
 
-7.      **if (isset(**\$\_POST**[**\$var**]))**
+7.      **if (isset(**$\_POST**[**$var**]))**
 
 8.          **return** get\_magic\_quotes\_gpc**() ?**
-    stripslashes**(**\$\_POST**[**\$var**]) :** \$\_POST**[**\$var**];**
+    stripslashes**(**$\_POST**[**$var**]) :** $\_POST**[**$var**];**
 
-9.      **else if (isset(**\$\_GET**[**\$var**]))**
+9.      **else if (isset(**$\_GET**[**$var**]))**
 
 10.         **return** get\_magic\_quotes\_gpc**() ?**
-    stripslashes**(**\$\_GET**[**\$var**]) :** \$\_GET**[**\$var**];**
+    stripslashes**(**$\_GET**[**$var**]) :** $\_GET**[**$var**];**
 
 11.     **else return** NULL**;**
 
@@ -209,12 +209,12 @@ Put the following code into the file:
 
 14. **use** Moltin**\\**SDK**\\**Storage**\\**Session **as** Storage**;**
 
-15. \$moltin **= new \\**Moltin**\\**SDK**\\**SDK**(new** Storage**(), new**
+15. $moltin **= new \\**Moltin**\\**SDK**\\**SDK**(new** Storage**(), new**
     Request**());**
 
 16. try **{**    
 
-17.     \$result **=** Moltin**::**Authenticate**(**'ClientCredentials'**, [**
+17.     $result **=** Moltin**::**Authenticate**(**'ClientCredentials'**, [**
 
 18.      'client\_id' **=\>** getVar**(**'client\_id'**),**
 
@@ -222,7 +222,7 @@ Put the following code into the file:
 
 20.     **]);**
 
-21.     **if (**\$result **==** true**) {**
+21.     **if (**$result **==** true**) {**
 
 22.      **?\>**
 
@@ -240,9 +240,9 @@ Put the following code into the file:
 
 28.         **\<?php**
 
-29.         \$products **=** Product**::**Listing**();**
+29.         $products **=** Product**::**Listing**();**
 
-30.         var\_dump**(**\$products**[**'result'**]);**
+30.         var\_dump**(**$products**[**'result'**]);**
 
 31.     **} else {**
 
@@ -264,10 +264,10 @@ Put the following code into the file:
 
 39.     **}**
 
-40. **}** catch **(**Exception \$e**) {**
+40. **}** catch **(**Exception $e**) {**
 
 41. **print** "\<font color='red'\>Caught exception:
-    \</font\>"**.**\$e**-\>**getMessage**();**
+    \</font\>"**.**$e**-\>**getMessage**();**
 
 42. **}**
 
@@ -293,23 +293,25 @@ Command which will load the Moltin PHP-SDK.
 
 *Lines 4-12:*
 
-*function getVar(\$var) {*
+*function getVar($var) {*
 
-*// Safely get the submitted variable (POST or GET method);*
+>   *// Safely get the submitted variable (POST or GET method);*
 
-*// Returns NULL if there is no variable with the specified name;*
+>   *// Returns NULL if there is no variable with the specified name;*
 
-*if (isset(*$$\_\text{POST}\lbrack$$*var]))*
+>   *if (isset(*$$\_\text{POST}\lbrack$$*var]))*
 
-*return get\_magic\_quotes\_gpc() ? stripslashes(*$$\_\text{POST}\lbrack$$*var])
-:* $$\_\text{POST}\lbrack$$*var];*
+>   *return get\_magic\_quotes\_gpc() ?
+>   stripslashes(*$$\_\text{POST}\lbrack$$*var]) :*
+>   $$\_\text{POST}\lbrack$$*var];*
 
-*else if (isset(*$$\_\text{GET}\lbrack$$*var]))*
+>   *else if (isset(*$$\_\text{GET}\lbrack$$*var]))*
 
-*return get\_magic\_quotes\_gpc() ? stripslashes(*$$\_\text{GET}\lbrack$$*var])
-:* $$\_\text{GET}\lbrack$$*var];*
+>   *return get\_magic\_quotes\_gpc() ?
+>   stripslashes(*$$\_\text{GET}\lbrack$$*var]) :*
+>   $$\_\text{GET}\lbrack$$*var];*
 
-*else return NULL;*
+>   *else return NULL;*
 
 *}*
 
@@ -328,7 +330,7 @@ the Storage class.
 
 *Line 15:*
 
-*\$moltin = new \\Moltin\\SDK\\SDK(new Storage(), new Request());*
+*$moltin = new \\Moltin\\SDK\\SDK(new Storage(), new Request());*
 
 This line of code will create a Moltin object, load cookies, set some default
 variables etc. This is the main object which provides an interface for the
@@ -342,7 +344,7 @@ an exception during execution of code from the 'try' block.
 
 *Lines 17-19:*
 
-*\$result = Moltin::Authenticate('ClientCredentials', [*
+*$result = Moltin::Authenticate('ClientCredentials', [*
 
 *'client\_id' =\> getVar('client\_id'),*
 
@@ -354,30 +356,31 @@ This code calls a static 'Authenticate' function from the Moltin object and
 retrieves an access token internally. The first argument is a string:
 'ClientCredentials' (authorization method) and the second argument is an array
 with credentials data obtained by previously defined function 'getVar'. The
-\$result variable is either true (in case of successful authentication) or false
+$result variable is either true (in case of successful authentication) or false
 (in case of wrong credentials).
 
 *Lines 21-31:*
 
-*if (\$result == true) {*
+*if ($result == true) {*
 
-*?\>*
+>   *?\>*
 
-*\<font color='blue'\>\<b\>Successful authentication.\</b\>\</font\>*
+>   *\<font color='blue'\>\<b\>Successful authentication.\</b\>\</font\>*
 
-*\&nbsp;*
+>   *\&nbsp;*
 
-*\<input type="button" value="back" onclick="window.location = 'index.html';"\>*
+>   *\<input type="button" value="back" onclick="window.location =
+>   'index.html';"\>*
 
-*\<br\>\<br\>*
+>   *\<br\>\<br\>*
 
-*Products listing:\<br\>*
+>   *Products listing:\<br\>*
 
-*\<?php*
+>   *\<?php*
 
-*\$products = Product::Listing();*
+>   *$products = Product::Listing();*
 
-*var\_dump(\$products['result']);*
+>   *var\_dump($products['result']);*
 
 *}*
 
@@ -386,9 +389,9 @@ print the message, a 'Back' button and products listing.
 
 *Lines 29-30:*
 
-*\$products = Product::Listing();*
+*$products = Product::Listing();*
 
-*var\_dump(\$products['result']);*
+*var\_dump($products['result']);*
 
 Product::Listing() will use the access token (internally), call the remote
 Moltin API to retrieve all products' data and print it using the standard
@@ -398,19 +401,20 @@ var\_dump() function.
 
 *else {*
 
-*?\>*
+>   *?\>*
 
-*\<font color='red'\>ERROR: \</font\>Wrong credentials.*
+>   *\<font color='red'\>ERROR: \</font\>Wrong credentials.*
 
-*Hit the back button and try again.*
+>   *Hit the back button and try again.*
 
-*\<br\>*
+>   *\<br\>*
 
-*\<input type="button" value="back" onclick="window.location = 'index.html';"\>*
+>   *\<input type="button" value="back" onclick="window.location =
+>   'index.html';"\>*
 
-*\<br\>\<br\>*
+>   *\<br\>\<br\>*
 
-*\<?php*
+>   *\<?php*
 
 *}*
 
