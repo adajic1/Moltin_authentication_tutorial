@@ -311,7 +311,7 @@ ERROR message and a 'Back' button.
 
 *Line 43:*
 ```php
-session\_unset();
+session_unset();
 ```
 
 This command should be commented out as it will delete cookies (which means it
