@@ -398,7 +398,7 @@ var\_dump() function.
 
 *Lines 31-39:*
 
-*else {*
+> *else {*
 
 >   *?\>*
 
@@ -415,7 +415,7 @@ var\_dump() function.
 
 >   *\<?php*
 
-*}*
+> *}*
 
 These lines of code will execute in case of wrong credentials. It will print the
 ERROR message and a 'Back' button.
